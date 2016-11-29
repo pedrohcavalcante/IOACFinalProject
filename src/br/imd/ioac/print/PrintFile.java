@@ -1,4 +1,4 @@
-package br.imd.ioad.print;
+package br.imd.ioac.print;
 
 import java.util.ArrayList;
 
@@ -20,11 +20,14 @@ public class PrintFile {
 		this.polSubs = Integer.parseInt(linhasArq.get(5));
 		this.polEscrita = Integer.parseInt(linhasArq.get(6));
 	}
-	public PrintFile(ArrayList<String> linhasArq, boolean isEntrada){
-		int size = linhasArq.size();
+	public PrintFile(String linhasArq, boolean isEntrada){
+		/*int size = linhasArq.size();
+		
 		for (int i = 0; i < size; i++){
 			System.out.println(linhasArq.get(i));
-		}
+		}*/
+		System.out.print(linhasArq + " ");
+		
 	}
 	public int getBloco() {
 		return bloco;
