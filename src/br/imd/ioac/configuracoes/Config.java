@@ -66,16 +66,16 @@ public class Config {
 		System.out.println("A memoria principal tem " + printConfig.getNumBlocos() + " blocos");
 		switch (printConfig.getMap()){
 		case 1: 
-			System.out.println("O mapeamento é Direto");
+			System.out.println("O mapeamento eh Direto");
 			break;
 		case 2: 
-			System.out.println("O mapeamento é Totalmente Associativo");
+			System.out.println("O mapeamento eh Totalmente Associativo");
 			break;
 		case 3:
-			System.out.println("O mapeamento é Parcialmente Associativo");
+			System.out.println("O mapeamento eh Parcialmente Associativo");
 			break;
 		default:
-				System.out.println("Mapeamento não reconhecido");
+				System.out.println("Mapeamento nao reconhecido");
 				break;
 		}
 		// oi
@@ -86,29 +86,29 @@ public class Config {
 		}
 		switch (printConfig.getPolSubs()){
 		case 1:
-			System.out.println("Política de substituição 1: Aleatório" );
+			System.out.println("Politica de substituicao 1: Aleatoio" );
 			break;
 		case 2:
-			System.out.println("Política de substituição 2: FIFO" );
+			System.out.println("Politica de substituicao 2: FIFO" );
 			break;
 		case 3:
-			System.out.println("Política de substituição 3: LFU" );
+			System.out.println("Politica de substituicao 3: LFU" );
 			break;
 		case 4: 
-			System.out.println("Política de substituição 4: LRU" );
+			System.out.println("substituicao 4: LRU" );
 			break;
 		default:
-				System.out.println("Política de substituição desconhecida");
+				System.out.println("substituicao desconhecida");
 		}
 		switch (printConfig.getPolEscrita()){
 		case 1: 
-			System.out.println("Política de escrita 1: Write-back");
+			System.out.println("Politica de escrita 1: Write-back");
 			break;
 		case 2:
-			System.out.println("Política de escrita 2: Write-through");
+			System.out.println("Politica de escrita 2: Write-through");
 			break;
 		default: 
-			System.out.println("Polítiac de substituição desconhecida");
+			System.out.println("Politica de escrita desconhecida");
 		}
 	}
 }
