@@ -6,5 +6,10 @@ public class MemoriaCache {
 	public MemoriaCache(int tamanho){
 		this.tamanho = tamanho;
 	}
-
+	public void print(){
+		for (int i = 0; i < tamanho; i++){
+			System.out.println(i);
+			
+		}
+	}
 }
