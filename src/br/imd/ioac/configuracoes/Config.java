@@ -10,6 +10,7 @@ import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import br.imd.ioac.memorias.MemoriaCache;
 import br.imd.ioac.memorias.MemoriaPrincipal;
 import br.imd.ioac.print.PrintFile;
 
@@ -70,7 +71,7 @@ public class Config {
 			linha = arqRead.readLine();
 		}
 		linha = arqRead.readLine();
-	
+		mp = new MemoriaPrincipal(printConfig.getNumBlocos(), printConfig.getBloco());
 		arq.close();
 		//printEntrada = new PrintFile(linhasArq);
 		for (int i = 0; i < entradas.size(); i++){
@@ -131,7 +132,8 @@ public class Config {
 		default: 
 			System.out.println("Politica de escrita desconhecida");
 		}
-		mp = new MemoriaPrincipal(printConfig.getNumBlocos(), printConfig.getBloco());
-		mp.print();
+		MemoriaCache mc = new MemoriaCache(printConfig.getNumLinhas(),printConfig.getBloco());
+		mc.print();
+		
 	}
 }
