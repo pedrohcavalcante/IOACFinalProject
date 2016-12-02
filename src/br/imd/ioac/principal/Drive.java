@@ -5,12 +5,15 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import br.imd.ioac.configuracoes.*;
 
+
 public class Drive {
 
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, IOException {
-		// TODO Auto-generated method stub
+		
 		Config beta = new Config();
+		//MemoriaPrincipal mp = new MemoriaPrincipal(16, 4);
+		
 	}
 
 }

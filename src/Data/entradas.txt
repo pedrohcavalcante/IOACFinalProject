@@ -1,4 +1,4 @@
-Command> Read 25
-Command> Read 28
-Command> Write 25 41
-Command> Show
+Read 25
+Read 28
+Write 25 41
+Show

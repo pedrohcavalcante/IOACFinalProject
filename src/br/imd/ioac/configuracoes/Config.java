@@ -10,7 +10,7 @@ import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import br.imd.ioac.memorias.MemoriaCache;
+import br.imd.ioac.memorias.MemoriaPrincipal;
 import br.imd.ioac.print.PrintFile;
 
 public class Config {
@@ -23,6 +23,7 @@ public class Config {
 	ArrayList<Comandos> entradas = new ArrayList<Comandos>();
 	PrintFile printConfig, printEntrada;
 	String linha;
+	MemoriaPrincipal mp;
 	public Config() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, IOException{
 		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		arqFile.setFileSelectionMode(JFileChooser.FILES_ONLY);	
@@ -59,26 +60,26 @@ public class Config {
 		  
 		while (linha != null){
 			String[] dados = linha.split(" ");
-			if (dados[1].toUpperCase().equals("READ")){
-				entradas.add(new Comandos(dados[1], dados[2], ""));
-			}else if(dados[1].toUpperCase().equals("WRITE")){
-				entradas.add(new Comandos(dados[1], dados[2], dados[3]));
-			}else if(dados[1].toUpperCase().equals("SHOW")){
-				entradas.add(new Comandos(dados[1], " ", " "));
+			if (dados[0].toUpperCase().equals("READ")){
+				entradas.add(new Comandos(dados[0], dados[1], ""));
+			}else if(dados[0].toUpperCase().equals("WRITE")){
+				entradas.add(new Comandos(dados[0], dados[1], dados[2]));
+			}else if(dados[0].toUpperCase().equals("SHOW")){
+				entradas.add(new Comandos(dados[0], " ", " "));
 			}
 			linha = arqRead.readLine();
 		}
 		linha = arqRead.readLine();
 	
 		arq.close();
-		printEntrada = new PrintFile(linhasArq);
+		//printEntrada = new PrintFile(linhasArq);
 		for (int i = 0; i < entradas.size(); i++){
 			printEntrada = new PrintFile(entradas.get(i).getComando(), true);
 			printEntrada = new PrintFile(entradas.get(i).getValor1(), true);
 			printEntrada = new PrintFile(entradas.get(i).getValor2(), true);
-			
+			System.out.println("\n");
 		}
-		MemoriaCache teste = new MemoriaCache(Integer.parseInt(linhasArq.get(1)));
+		//MemoriaCache teste = new MemoriaCache(Integer.parseInt(linhasArq.get(1)));
 		//printEntrada = new PrintFile(valores, true);
 		
 		System.out.println("Cada bloco contem " + printConfig.getBloco() + " palavras");
@@ -106,7 +107,7 @@ public class Config {
 		}
 		switch (printConfig.getPolSubs()){
 		case 1:
-			System.out.println("Politica de substituicao 1: Aleatoio" );
+			System.out.println("Politica de substituicao 1: Aleatorio" );
 			break;
 		case 2:
 			System.out.println("Politica de substituicao 2: FIFO" );
@@ -130,5 +131,7 @@ public class Config {
 		default: 
 			System.out.println("Politica de escrita desconhecida");
 		}
+		mp = new MemoriaPrincipal(printConfig.getNumBlocos(), printConfig.getBloco());
+		mp.print();
 	}
 }
