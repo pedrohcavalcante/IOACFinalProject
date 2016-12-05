@@ -29,4 +29,18 @@ public class MemoriaCache {
 			
 		}
 	}
+	public boolean search(int value){
+		for(int i = 0; i < linhas.size(); i++){
+			if (linhas.get(i).getBloco() == null){
+					return false;
+			}else{
+				for (int j = 0; j < linhas.get(i).getBloco().getPalavras().size(); j++){
+					if ((linhas.get(i).getNum_bloco() * linhas.get(i).getBloco().getPalavras().size()+j == value)){
+					return true;
+				}
+			}
+			
+		}
+		return false;
+	}
 }

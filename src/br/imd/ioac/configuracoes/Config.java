@@ -25,6 +25,8 @@ public class Config {
 	PrintFile printConfig, printEntrada;
 	String linha;
 	MemoriaPrincipal mp;
+	MemoriaCache mc;
+	int j = 0;
 	public Config() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, IOException{
 		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		arqFile.setFileSelectionMode(JFileChooser.FILES_ONLY);	
@@ -53,7 +55,7 @@ public class Config {
 		try{
 			arq = new FileReader(entrada.getSelectedFile());
 		}catch (NullPointerException npx){
-			System.out.println("Arquivo de leitura nao selecionado. Encerrando a aplicação");
+			System.out.println("Arquivo de leitura nao selecionado. Encerrando a aplicacao");
 			System.exit(0);
 		}
 		arqRead = new BufferedReader(arq);
@@ -72,17 +74,40 @@ public class Config {
 		}
 		linha = arqRead.readLine();
 		mp = new MemoriaPrincipal(printConfig.getNumBlocos(), printConfig.getBloco());
+		mc = new MemoriaCache(printConfig.getNumLinhas(),printConfig.getBloco());
 		arq.close();
 		//printEntrada = new PrintFile(linhasArq);
-		for (int i = 0; i < entradas.size(); i++){
+		/*for (int i = 0; i < entradas.size(); i++){
 			printEntrada = new PrintFile(entradas.get(i).getComando(), true);
 			printEntrada = new PrintFile(entradas.get(i).getValor1(), true);
 			printEntrada = new PrintFile(entradas.get(i).getValor2(), true);
 			System.out.println("\n");
+		}*/
+		while(j != entradas.size()){
+			if (entradas.get(j).getComando().toUpperCase().equals("READ")){
+				System.out.println("Procurando por " + entradas.get(j).getValor1());
+				if (mc.search(Integer.parseInt(entradas.get(j).getValor1()))){
+					System.out.println("HIT");
+				}else{
+					System.out.println("MISS");
+				}
+			}else if(entradas.get(j).getComando().toUpperCase().equals("SHOW")){
+				mc.print();
+			}else if(entradas.get(j).getComando().toUpperCase().equals("WRITE")){
+				
+			}
+			j++;
 		}
 		//MemoriaCache teste = new MemoriaCache(Integer.parseInt(linhasArq.get(1)));
 		//printEntrada = new PrintFile(valores, true);
 		
+		
+		
+		
+		
+		
+		// SESSAO DE CONTROLE DE DADOS PARA COMPARACAO
+		System.out.println("=========================================");
 		System.out.println("Cada bloco contem " + printConfig.getBloco() + " palavras");
 		System.out.println("A cache tem " + printConfig.getNumLinhas() + " linhas");
 		System.out.println("A memoria principal tem " + printConfig.getNumBlocos() + " blocos");
@@ -132,8 +157,8 @@ public class Config {
 		default: 
 			System.out.println("Politica de escrita desconhecida");
 		}
-		MemoriaCache mc = new MemoriaCache(printConfig.getNumLinhas(),printConfig.getBloco());
-		mc.print();
+		
+		
 		
 	}
 }
