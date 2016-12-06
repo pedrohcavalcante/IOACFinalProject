@@ -41,6 +41,17 @@ public class MemoriaCache {
 			}
 			
 		}
+		}
 		return false;
 	}
+	public ArrayList<Linhas> getLinhas() {
+		return linhas;
+	}
+	public void setLinhas(int position, ArrayList<Bloco> bloc) {
+		for (int i = position; i < tam_bloco; i++){
+		
+		}
+		
+	}
+	
 }

@@ -7,9 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
-import javax.swing.UIManager;
+
 import javax.swing.UnsupportedLookAndFeelException;
 
+import br.imd.ioac.memorias.Bloco;
 import br.imd.ioac.memorias.MemoriaCache;
 import br.imd.ioac.memorias.MemoriaPrincipal;
 import br.imd.ioac.print.PrintFile;
@@ -24,11 +25,11 @@ public class Config {
 	ArrayList<Comandos> entradas = new ArrayList<Comandos>();
 	PrintFile printConfig, printEntrada;
 	String linha;
-	MemoriaPrincipal mp;
 	MemoriaCache mc;
+	MemoriaPrincipal mp;
 	int j = 0;
 	public Config() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, IOException{
-		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		//UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		arqFile.setFileSelectionMode(JFileChooser.FILES_ONLY);	
 		arqFile.showOpenDialog(parent);
 		// Lendo arquivo de configuracao
@@ -73,8 +74,9 @@ public class Config {
 			linha = arqRead.readLine();
 		}
 		linha = arqRead.readLine();
-		mp = new MemoriaPrincipal(printConfig.getNumBlocos(), printConfig.getBloco());
 		mc = new MemoriaCache(printConfig.getNumLinhas(),printConfig.getBloco());
+		mp = new MemoriaPrincipal(printConfig.getNumBlocos(), printConfig.getBloco(), mc);
+		
 		arq.close();
 		//printEntrada = new PrintFile(linhasArq);
 		/*for (int i = 0; i < entradas.size(); i++){
@@ -90,6 +92,10 @@ public class Config {
 					System.out.println("HIT");
 				}else{
 					System.out.println("MISS");
+					if (mp.search(Integer.parseInt(entradas.get(j).getValor1()))){
+						
+					}
+					//mp.print();
 				}
 			}else if(entradas.get(j).getComando().toUpperCase().equals("SHOW")){
 				mc.print();
@@ -98,12 +104,6 @@ public class Config {
 			}
 			j++;
 		}
-		//MemoriaCache teste = new MemoriaCache(Integer.parseInt(linhasArq.get(1)));
-		//printEntrada = new PrintFile(valores, true);
-		
-		
-		
-		
 		
 		
 		// SESSAO DE CONTROLE DE DADOS PARA COMPARACAO
