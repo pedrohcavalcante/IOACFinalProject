@@ -49,7 +49,9 @@ public class MemoriaCache {
 	}
 	public void setLinhas(int position, ArrayList<Bloco> bloc) {
 		for (int i = position; i < tam_bloco; i++){
-		
+			linhas.get(i).setNum_bloco(position);
+			linhas.get(i).setBloco(bloc.get(i));
+			break;
 		}
 		
 	}

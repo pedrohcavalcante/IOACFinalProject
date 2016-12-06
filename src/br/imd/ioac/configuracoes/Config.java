@@ -93,12 +93,12 @@ public class Config {
 				}else{
 					System.out.println("MISS");
 					if (mp.search(Integer.parseInt(entradas.get(j).getValor1()))){
-						
+						System.out.println(entradas.get(j).getValor1() + " alocado na memoria cache");
 					}
-					//mp.print();
 				}
 			}else if(entradas.get(j).getComando().toUpperCase().equals("SHOW")){
 				mc.print();
+				mp.print();
 			}else if(entradas.get(j).getComando().toUpperCase().equals("WRITE")){
 				
 			}

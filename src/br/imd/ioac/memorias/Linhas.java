@@ -4,7 +4,7 @@ public class Linhas {
 	private int num_bloco;
 	private Bloco bloco; 
 	public Linhas(){
-		num_bloco = 99;
+		//num_bloco = 99;
 		bloco = null;
 	}
 	public int getNum_bloco() {

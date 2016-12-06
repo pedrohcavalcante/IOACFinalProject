@@ -30,10 +30,9 @@ public class MemoriaPrincipal {
 		for (int i = 0; i < blocos.size(); i++){
 			for (int j = 0; j < blocos.get(i).getPalavras().size(); j++){
 				if (blocos.get(i).getPalavras().get(j).getValor() == value){
-					System.out.println("oi, eh igual e encontrado em : " + i + "-" + (i * tam_bloco + j) + "-" + blocos.get(i).getPalavras().get(j).getValor());
+					//System.out.println("oi, eh igual e encontrado em : " + i + "-" + (i * tam_bloco + j) + "-" + blocos.get(i).getPalavras().get(j).getValor());
 					int position = (i % 4);
 					mc.setLinhas(position, blocos);
-				
 					return true;
 				}
 			}
